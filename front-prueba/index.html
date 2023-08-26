@@ -1,0 +1,43 @@
+<htm>
+  <body>
+    <h1>Prueba location</h1>
+  </body>
+  <script>
+    if (navigator.geolocation) {
+      // 1 minut --> 60000
+      setInterval(() => {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            newLocation({
+              accuracy: position.coords.accuracy,
+              altitude: position.coords.altitude,
+              altitudeAccuracy: position.coords.altitudeAccuracy,
+              heading: position.coords.heading,
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+              speed: position.coords.speed,
+            });
+          },
+          (err) => {
+            console.error(err);
+          },
+          { enableHighAccuracy: true }
+        );
+      }, 1000);
+    }
+
+    async function newLocation(position) {
+      console.log("newLocation position: ", position);
+
+    //   const url = "http://localhost:3000/location";
+      const url = "http://192.168.56.1:3000/location";
+
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(position),
+      };
+      const response = await fetch(url, requestOptions);
+    }
+  </script>
+</htm>
