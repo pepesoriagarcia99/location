@@ -1,0 +1,31 @@
+
+@charset 'utf-8';
+
+/*
+Below, example of responsive base font-size
+ORDER MATTERS (This is desktop-first, for mobile-first, order would be inverted and min-width used in mixin)
+*/
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
